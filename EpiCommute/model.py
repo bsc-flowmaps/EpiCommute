@@ -277,6 +277,10 @@ class SIRModel():
             self.observables['S_total'] = []
             self.observables['I_total'] = []
             self.observables['R_total'] = []
+        if 'epi_matrixes' in self.save_observables:        
+            self.observables['S_M'] = []
+            self.observables['I_M'] = []
+            self.observables['R_M'] = []
         if 'arrival_times' in self.save_observables:
             M = self.population.shape[0] # number of subpopulations
             self.observables['T_arrival'] = np.ones(M) * self.T_max
@@ -415,6 +419,11 @@ class SIRModel():
             self.observables['S'].append( self.S.sum(axis=1) / subpopulations)
             self.observables['I'].append( self.I.sum(axis=1) / subpopulations)
             self.observables['R'].append( self.R.sum(axis=1) / subpopulations)
+        if 'epi_matrixes' in self.save_observables:
+            # The matrix of S, I, R
+            self.observables['S_M'].append(self.S)
+            self.observables['I_M'].append(self.I)
+            self.observables['R_M'].append(self.R)
         if 'arrival_times' in self.save_observables:
             # Save the arrival time of the epidemic in each subpopulation
             #
