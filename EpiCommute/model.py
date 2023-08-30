@@ -138,6 +138,7 @@ class SIRModel():
                 save_observables=[
                     'epi_subpopulations',
                     'epi_total',
+                    'epi_matrixes',
                     'arrival_times'],
                 VERBOSE=False
                 ):
